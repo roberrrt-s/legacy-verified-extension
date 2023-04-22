@@ -24,3 +24,4 @@ Suggestions and pull requests are welcomed. This is a work in progress.
 
 ## License
 
+This project is licensed under the [MIT license](./LICENSE)
