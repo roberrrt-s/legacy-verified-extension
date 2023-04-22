@@ -1,6 +1,6 @@
-# <img src="public/icons/icon_48.png" width="45" align="left"> Legacy Verified Extension
+# <img src="public/icons/icon_48.png" width="45" align="left"> Legacy Verified
 
-The Legacy Verified Extension enables people to add a green verified logo next to names of accounts on Twitter that were previously verified. Uses data provided by [Travis Brown](https://github.com/travisbrown) and initiated by [Oliver Alexander](https://twitter.com/OAlexanderDK).
+The Legacy Verified browser extension enables people to add a green verified logo next to names of accounts on Twitter that were previously verified. Uses data provided by [Travis Brown](https://github.com/travisbrown) and initiated by [Oliver Alexander](https://twitter.com/OAlexanderDK).
 
 ## Features
 
@@ -8,7 +8,12 @@ The Legacy Verified Extension enables people to add a green verified logo next t
 
 ## Install
 
-Currently, installation requires you to download this repository, run `npm run repack` and upload it.
+Currently, installation requires you to:
+
+- Clone or download this repository
+- Run `npm run repack` inside the main folder
+- Navigate to your [extension page](chrome://extensions) in Chrome.
+-
 
 ## Contribution
 
