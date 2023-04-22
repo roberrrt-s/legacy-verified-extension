@@ -12,8 +12,9 @@ Currently, installation requires you to:
 
 - Clone or download this repository
 - Run `npm run repack` inside the main folder
-- Navigate to your [extension page](chrome://extensions) in Chrome.
--
+- Navigate to your [extension page](chrome://extensions) in Chrome
+- Apply _Developer Mode_ in the top right, and click on _Load unpacked_
+- Upload the contents of the `/build/` folder
 
 ## Contribution
 
