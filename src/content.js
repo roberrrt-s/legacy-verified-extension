@@ -13,6 +13,14 @@ const maxTries = 10;
 
 // Listen for URL changes in the background script, since Twitter uses React and page refreshes are not triggered
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  // Check whether the style tag is already added to the DOM.
+  if (!document.querySelector('[data-legacy="verified"]')) {
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `<style data-legacy="verified">.legacy-verified {padding-right: 0} .legacy-verified::after {content:' '; display: inline-block; margin-left: .15em; height: 20px; width: 20px; aspect-ratio: 1/1; background-image: url(${imageUrl}); background-size: contain; background-repeat: no-repeat; background-position: top;}</style>`
+    );
+  }
+
   if (
     request.message === 'urlChanged' &&
     data.length > 0 &&
@@ -76,9 +84,5 @@ function waitForLoadedPage() {
 }
 
 function addVerifiedLogo(node) {
-  document.head.insertAdjacentHTML(
-    'beforeend',
-    `<style>.legacy-verified {padding-right: 0} .legacy-verified::after {content:' '; display: inline-block; margin-left: .15em; height: 20px; width: 20px; aspect-ratio: 1/1; background-image: url(${imageUrl}); background-size: contain; background-repeat: no-repeat; background-position: top;}</style>`
-  );
   node.querySelector('span').classList.add('legacy-verified');
 }
