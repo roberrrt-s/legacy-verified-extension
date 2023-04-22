@@ -17,7 +17,6 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "storage",
     "tabs"
   ],
   "web_accessible_resources": [{
