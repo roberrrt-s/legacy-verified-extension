@@ -56,6 +56,10 @@ function scrapeProfile() {
       findMatchForVerifiedUser(userData.author.identifier.toString());
     }
     tries++;
+
+    if (tries > 9) {
+      clearInterval(scraping);
+    }
   }, 500);
 }
 
@@ -81,6 +85,10 @@ function waitForLoadedPage() {
     }
   }, 500);
   tries++;
+
+  if (tries > 9) {
+    clearInterval(checkForLoadedPage);
+  }
 }
 
 function addVerifiedLogo(node) {
