@@ -9,13 +9,19 @@ The Legacy Verified Extension enables people to add a green verified logo next t
 
 ## Install
 
-[**Chrome** extension]() <!-- TODO: Add chrome extension link inside parenthesis -->
+Currently, installation requires you to download this repository, run npm pack and upload it.
 
 ## Contribution
 
-Suggestions and pull requests are welcomed!.
+Suggestions and pull requests are welcomed. This is a work in progress.
 
----
 
-This project was bootstrapped with [Chrome Extension CLI](https://github.com/dutiyesh/chrome-extension-cli)
+
+## Acknowledgements
+
+- Dataset has been provided by [Travis Brown](https://github.com/travisbrown)
+- Concept initiated by [Oliver Alexander](https://twitter.com/OAlexanderDK)
+- This project was bootstrapped with [Chrome Extension CLI](https://github.com/dutiyesh/chrome-extension-cli)
+
+## License
 
