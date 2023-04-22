@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Legacy Verified",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Legacy Verified is a browser extension that enables you to view who previously was verified on Twitter",
   "icons": {
     "16": "icons/icon_16.png",
