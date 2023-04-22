@@ -1,19 +1,22 @@
 'use strict';
 
 // With background scripts you can communicate with popup
-// and contentScript files.
+// and content files.
 // For more information on background script,
 // See https://developer.chrome.com/extensions/background_pages
-
-console.log('on init');
+let latestUrl = '';
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  console.log('I fire');
+  latestUrl = changeInfo.url ? changeInfo.url : latestUrl;
 
-  if (changeInfo.url) {
-    chrome.tabs.sendMessage(tabId, {
-      message: 'urlChanged',
-      url: changeInfo.url,
-    });
+  if (latestUrl && changeInfo.status === 'complete') {
+    chrome.tabs
+      .sendMessage(tabId, {
+        message: 'urlChanged',
+        url: latestUrl,
+      })
+      .catch((error) => {
+        return;
+      });
   }
 });
