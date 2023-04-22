@@ -4,8 +4,7 @@ The Legacy Verified Extension enables people to add a green verified logo next t
 
 ## Features
 
-- Feature 1
-- Feature 2
+ - Adds a small purple icon next to usernames on their profile when the account was previously verified.
 
 ## Install
 
