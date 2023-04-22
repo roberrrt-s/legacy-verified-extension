@@ -8,7 +8,7 @@ The Legacy Verified Extension enables people to add a green verified logo next t
 
 ## Install
 
-Currently, installation requires you to download this repository, run npm pack and upload it.
+Currently, installation requires you to download this repository, run `npm run repack` and upload it.
 
 ## Contribution
 
