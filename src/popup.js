@@ -1,3 +1,5 @@
 'use strict';
 
-// We don't use the pop up for now
+import './style/style.css';
+
+// We don't use the pop up logic for now
