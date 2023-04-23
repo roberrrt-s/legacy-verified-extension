@@ -1,5 +1,1 @@
-'use strict';
-
-import events from './modules/background/events.js';
-
-events();
+// It's empty here.
