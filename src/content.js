@@ -9,7 +9,7 @@ const imageUrl = chrome.runtime.getURL('icons/icon_128.png');
 // TODO: Make this less hacky.
 let data = [];
 let previousUrl = '';
-let isScraping, checkingForLoadedPage;
+let isScraping, checkingForLoadedPage, isScrapingHome;
 
 const maxTries = 10;
 
@@ -30,8 +30,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   ) {
     clearInterval(isScraping);
     clearInterval(checkingForLoadedPage);
+    clearInterval(isScrapingHome);
     previousUrl = request.url;
-    scrapeProfile();
+    scrapePage();
   }
 });
 
@@ -42,14 +43,57 @@ if (url) {
     dynamicTyping: true,
     complete: (results) => {
       data = results.data;
-      scrapeProfile();
+      scrapePage();
     },
   });
 } else {
   url = chrome.runtime.getURL('legacy-verified.csv');
 }
 
-function scrapeProfile() {
+function scrapeHome() {
+  if (!document.querySelector('[data-legacy="verified"]')) {
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `<style data-legacy="verified">.legacy-verified {padding-right: 0} .legacy-verified::after {content:' '; display: inline-block; margin-left: .15em; height: 20px; width: 20px; aspect-ratio: 1/1; background-image: url(${imageUrl}); background-size: contain; background-repeat: no-repeat; background-position: top;}</style>`
+    );
+  }
+
+  isScrapingHome = setInterval(() => {
+    const profiles = document.querySelectorAll(
+      '[data-testid="User-Name"]:not(.legacy-checked)'
+    );
+
+    profiles.forEach((name) => {
+      name.classList.add('legacy-checked');
+
+      const link = name.querySelector('a');
+
+      if (link) {
+        const match = data.find((row) => {
+          return row[1].toString() === link.getAttribute('href').substring(1);
+        });
+        if (match) {
+          const container = name.querySelector('a > *');
+
+          if (container) {
+            container.classList.add('legacy-verified');
+          }
+        }
+      }
+    });
+  }, 1000);
+}
+
+function scrapePage() {
+  // Let's find out if we're on the homepage first.
+  if (
+    window.location.pathname.split('/')[1] === 'home' ||
+    window.location.pathname.split('/')[2] === 'status'
+  ) {
+    scrapeHome();
+    return;
+  }
+
   let tries = 1;
   isScraping = setInterval(() => {
     const scheme = document.querySelector('script[type="application/ld+json"]');
@@ -57,7 +101,7 @@ function scrapeProfile() {
     if (scheme) {
       const userData = JSON.parse(scheme.textContent);
       clearInterval(isScraping);
-      findMatchForVerifiedUser(userData.author.identifier.toString());
+      findMatchForVerifiedUser(userData.author.identifier.toString(), 0);
     }
     tries++;
 
@@ -68,9 +112,9 @@ function scrapeProfile() {
 }
 
 // Check if we can find the user on the profile page.
-function findMatchForVerifiedUser(id) {
+function findMatchForVerifiedUser(id, type) {
   const match = data.find((row) => {
-    return row[0].toString() === id;
+    return row[type].toString() === id;
   });
 
   if (match) {
