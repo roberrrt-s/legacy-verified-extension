@@ -9,6 +9,8 @@ const imageUrl = chrome.runtime.getURL('icons/icon_128.png');
 // TODO: Make this less hacky.
 let data = [];
 let previousUrl = '';
+let isScraping, checkingForLoadedPage;
+
 const maxTries = 10;
 
 // Listen for URL changes in the background script, since Twitter uses React and page refreshes are not triggered
@@ -26,6 +28,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     data.length > 0 &&
     previousUrl !== request.url
   ) {
+    clearInterval(isScraping);
+    clearInterval(checkingForLoadedPage);
     previousUrl = request.url;
     scrapeProfile();
   }
@@ -47,18 +51,18 @@ if (url) {
 
 function scrapeProfile() {
   let tries = 1;
-  const scraping = setInterval(() => {
+  isScraping = setInterval(() => {
     const scheme = document.querySelector('script[type="application/ld+json"]');
 
     if (scheme) {
       const userData = JSON.parse(scheme.textContent);
-      clearInterval(scraping);
+      clearInterval(isScraping);
       findMatchForVerifiedUser(userData.author.identifier.toString());
     }
     tries++;
 
-    if (tries > 9) {
-      clearInterval(scraping);
+    if (tries > maxTries) {
+      clearInterval(isScraping);
     }
   }, 500);
 }
@@ -76,18 +80,18 @@ function findMatchForVerifiedUser(id) {
 
 function waitForLoadedPage() {
   let tries = 1;
-  const checkForLoadedPage = setInterval(() => {
+  checkingForLoadedPage = setInterval(() => {
     let userNameNode = document.querySelector('[data-testid="UserName"]');
 
     if (userNameNode) {
-      clearInterval(checkForLoadedPage);
+      clearInterval(checkingForLoadedPage);
       addVerifiedLogo(userNameNode);
     }
   }, 500);
   tries++;
 
-  if (tries > 9) {
-    clearInterval(checkForLoadedPage);
+  if (tries > maxTries) {
+    clearInterval(checkingForLoadedPage);
   }
 }
 
