@@ -2,4 +2,10 @@
 
 import './style/style.css';
 
-// We don't use the pop up logic for now
+document.addEventListener('DOMContentLoaded', () => {
+  const link = document.querySelector('a');
+
+  link.addEventListener('click', () => {
+    chrome.tabs.create({ active: true, url: link.href });
+  });
+});

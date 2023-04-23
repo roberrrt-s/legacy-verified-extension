@@ -1,6 +1,7 @@
 body {
     width: auto;
     margin: 1em;
+    background: rgb(13, 17, 23);
 }
 
 main a {
@@ -8,7 +9,7 @@ main a {
     flex-flow: row nowrap;
     align-items: center; /* NEW */
 
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -20,4 +21,5 @@ main h1 {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     margin-top: 0;
     margin-bottom: 0;
+    white-space: nowrap;
 }
