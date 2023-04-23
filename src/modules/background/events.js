@@ -1,5 +1,5 @@
 export default function events() {
-  function handleTabUpdate() {
+  (function () {
     let latestUrl = '';
 
     chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
@@ -16,7 +16,5 @@ export default function events() {
           });
       }
     });
-  }
-
-  handleTabUpdate();
+  })();
 }
