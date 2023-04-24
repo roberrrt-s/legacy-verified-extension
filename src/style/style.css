@@ -1,6 +1,6 @@
 body {
     width: auto;
-    margin: 1em;
+    margin: 1rem;
     background: rgb(13, 17, 23);
 }
 
@@ -14,7 +14,7 @@ main a {
 }
 
 main img {
-    margin-right: 1em;
+    margin-right: 1rem;
 }
 
 main h1 {
