@@ -32,6 +32,20 @@ function parse(nodes, type, data) {
 
       console.log();
       break;
+    case 'card':
+      const link = nodes.querySelector('a:not([tabindex="-1"])');
+
+      if (link) {
+        nodes.classList.add('legacy-checked');
+
+        const author = link.getAttribute('href').substring(1);
+
+        if (verify(data, author, 1)) {
+          link.querySelector('div').classList.add('legacy-verified');
+        }
+      }
+
+      break;
     default:
       console.log('No type specified');
       break;

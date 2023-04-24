@@ -1,6 +1,6 @@
 {
   "name": "legacy-verified-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Legacy Verified Extension",
   "private": true,
   "scripts": {
