@@ -11,6 +11,10 @@ function scrape(callback) {
     '[data-testid="HoverCard"] > div:not(.legacy-checked) '
   );
 
+  const cell = document.querySelectorAll(
+    '[data-testid="UserCell"]:not(.legacy-checked)'
+  );
+
   if (tweets.length > 0) {
     callback(tweets, 'tweets');
   }
@@ -21,6 +25,10 @@ function scrape(callback) {
 
   if (card) {
     callback(card, 'card');
+  }
+
+  if (cell.length > 0) {
+    callback(cell, 'cell');
   }
 }
 

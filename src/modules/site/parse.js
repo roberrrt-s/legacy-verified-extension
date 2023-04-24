@@ -46,6 +46,37 @@ function parse(nodes, type, data) {
       }
 
       break;
+    case 'cell':
+      nodes.forEach((cell) => {
+        cell.classList.add('legacy-checked');
+        const link = cell.querySelector('a:not([aria-hidden="true"])');
+
+        if (link) {
+          const author = link.getAttribute('href').substring(1);
+
+          if (verify(data, author, 1)) {
+            link.querySelector('div').classList.add('legacy-verified');
+          }
+        } else {
+          // This is most likely a search node.
+          const span = cell.querySelector('div[aria-label="Remove"]')
+            ?.parentNode?.firstChild;
+
+          if (span) {
+            const author = span
+              .querySelector('div[tabindex="-1"] span')
+              ?.textContent.substring(1);
+
+            if (verify(data, author, 1)) {
+              const container =
+                span.querySelector('div[dir="ltr"]')?.parentNode;
+
+              container.classList.add('legacy-verified');
+            }
+          }
+        }
+      });
+      break;
     default:
       console.log('No type specified');
       break;
