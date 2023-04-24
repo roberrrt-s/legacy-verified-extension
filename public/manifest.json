@@ -21,12 +21,21 @@
   ],
   "web_accessible_resources": [{
     "resources": ["/icons/*.png", "legacy-verified.csv"],
-    "matches": ["*://twitter.com/*"]
+    "matches": ["*://twitter.com/*", "*://*.twitter.com/*"]
   }],
   "content_scripts": [
     {
       "matches": [
         "*://twitter.com/*"
+      ],
+      "run_at": "document_idle",
+      "js": [
+        "content.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.twitter.com/*"
       ],
       "run_at": "document_idle",
       "js": [
