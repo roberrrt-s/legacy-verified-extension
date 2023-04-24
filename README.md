@@ -7,6 +7,8 @@ The Legacy Verified browser extension enables people to add a <strike>green</str
 - Adds purple badges to nearly all existing locations on the site
 - Verifies a users profile page using their *user_id*
 - Uses *screen_name* as verification methods on all other locations due to lack of embedded *user_id* for timelines and status pages
+- Has support for TweetDeck
+- Compatible between Firefox, MS Edge, Chrome and Brave
 
 ## Install
 
