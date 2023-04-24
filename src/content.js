@@ -9,10 +9,6 @@ import parse from './modules/site/parse.js';
 async function init() {
   const data = await loader();
 
-  scrape((nodes, type) => {
-    parse(nodes, type, data);
-  });
-
   watcher(() => {
     scrape((nodes, type) => {
       parse(nodes, type, data);
