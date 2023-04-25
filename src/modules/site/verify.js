@@ -1,6 +1,6 @@
 function verify(data, input, type) {
   return data.find((row) => {
-    return row[type].toString() === input;
+    return row[type]?.toString() === input;
   });
 }
 
