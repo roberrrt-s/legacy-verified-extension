@@ -10,7 +10,13 @@ The Legacy Verified browser extension enables people to add a <strike>green</str
 - Has support for TweetDeck
 - Compatible between Firefox, MS Edge, Chrome and Brave
 
-## Install
+## Usage
+
+- [Download the FireFox add-on](https://addons.mozilla.org/en-US/firefox/addon/legacy-verified/)
+- Download the Chrome Extension (pending review)
+- Download the Edge add-on (pending review)
+
+## Install locally
 
 Currently, installation requires you to:
 
