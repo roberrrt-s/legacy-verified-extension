@@ -14,7 +14,7 @@
     "default_popup": "popup.html"
   },
   "web_accessible_resources": [{
-    "resources": ["/icons/*.png", "legacy-verified.csv"],
+    "resources": ["/icons/*.png", "data/*.csv", "js/*.js"],
     "matches": ["*://twitter.com/*", "*://*.twitter.com/*"]
   }],
   "content_scripts": [
