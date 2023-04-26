@@ -13,9 +13,6 @@
     "default_title": "Legacy Verified Extension",
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "tabs"
-  ],
   "web_accessible_resources": [{
     "resources": ["/icons/*.png", "legacy-verified.csv"],
     "matches": ["*://twitter.com/*", "*://*.twitter.com/*"]
