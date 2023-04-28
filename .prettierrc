@@ -6,5 +6,6 @@
   "arrowParens": "always",
   "htmlWhitespaceSensitivity": "css",
   "insertPragma": false,
-  "semi": true
+  "semi": true,
+  "printWidth": 120
 }
