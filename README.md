@@ -13,7 +13,7 @@ The Legacy Verified browser extension enables people to add a <strike>green</str
 ## Usage
 
 - [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1280px-Firefox_logo%2C_2019.svg.png" width="16px" height="16px" alt="Firefox logo" /> Download the FireFox add-on](https://addons.mozilla.org/en-US/firefox/addon/legacy-verified/)
-- Download the Chrome Extension (pending review)
+- [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/720px-Google_Chrome_icon_%28February_2022%29.svg.png" width="16px" height="16px" alt="Chrome logo" /> Download the Chrome Extension](https://chrome.google.com/webstore/detail/legacy-verified/kpaemodmgoobmechkcplpffkpfbpebnm)
 - Download the Edge add-on (pending review)
 
 ## Install locally
